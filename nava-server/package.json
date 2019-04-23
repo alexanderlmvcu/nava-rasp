@@ -9,6 +9,7 @@
   "author": "Linda M Alexander",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "ws": "^6.2.1"
   }
 }

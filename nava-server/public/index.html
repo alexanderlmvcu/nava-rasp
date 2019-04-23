@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<body>
+<button type="button" onclick="runWebsocket()">Run with websocket</button>
+<pre id="outputWebsocket"></pre>
+<script src="script.js"></script>
+<script>
+  var outputWebsocket = document.getElementById("outputWebsocket")
+  function runWebsocket() {
+    outputWebsocket.innerText = ""
+    openConnection(function (connection) {
+      connection.send("run")
+    })
+  }
+  function appendWSText(text) {
+    outputWebsocket.innerText += text
+  }
+  var conn = {}
+  function openConnection(cb) {
+    // uses global 'conn' object
+    if (conn.readyState === undefined || conn.readyState > 1) {
+      conn = new WebSocket('ws://' + window.location.host + '/');
+      conn.onopen = function () {
+        appendWSText("\\nSocket open")
+        if(typeof cb === "function"){
+          cb(conn)
+        }
+      };
+      conn.onmessage = function (event) {
+        appendWSText(event.data)
+      };
+      conn.onclose = function (event) {
+        appendWSText("\\nSocket closed")
+      };
+    } else if(typeof cb === "function"){
+      cb(conn)
+    }
+  }
+  if (window.WebSocket === undefined) {
+    appendWSText("\\nSockets not supported")
+  } else {
+    openConnection();
+  }
+</script>
+</body>
+</html>
