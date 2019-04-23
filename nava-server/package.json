@@ -1,0 +1,14 @@
+{
+  "name": "nava-server",
+  "version": "1.0.0",
+  "description": "Raspberry Pi and nava",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Linda M Alexander",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
