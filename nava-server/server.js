@@ -49,4 +49,4 @@ wss.on('connection', (ws) => {
   ws.send('Connection with WebSocket server initialized');
 });
 
-server.listen(8080, () => console.log('Server running on port 8080'))
+server.listen(8080, () => console.log('Server running on port 8080 public'))
